@@ -3,7 +3,7 @@ package me.kryz.mymessage.common.util;
 /**
  * Utility class for parsing numbers with additional validation.
  */
-public class NumberParser {
+public final class NumberParser {
     
     public static int parsePositiveInt(final String text, final int defaultValue) {
         if (text == null) {
