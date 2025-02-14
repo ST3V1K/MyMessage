@@ -1,7 +1,0 @@
-prefix: "<mm>"
-
-reload: "<green>[MyMessage] Plugin reloaded!"
-
-help: "<green>[MyMessage] <gold>/mymessage reload"
-
-no-permission: "<red>[MyMessage] You don't have permission for this command!"
