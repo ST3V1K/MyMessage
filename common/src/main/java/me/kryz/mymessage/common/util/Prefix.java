@@ -1,4 +1,4 @@
-package me.kryz.mymessage.common;
+package me.kryz.mymessage.common.util;
 
 public final class Prefix {
     private static String prefix;

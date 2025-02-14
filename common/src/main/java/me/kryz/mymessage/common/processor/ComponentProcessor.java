@@ -1,10 +1,10 @@
 package me.kryz.mymessage.common.processor;
 
-import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.papi.PAPIHook;
 import me.kryz.mymessage.common.tags.BaseTag;
 import me.kryz.mymessage.common.tags.PlayerTags;
 import me.kryz.mymessage.common.tags.TagsRegistration;
+import me.kryz.mymessage.common.util.Prefix;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
