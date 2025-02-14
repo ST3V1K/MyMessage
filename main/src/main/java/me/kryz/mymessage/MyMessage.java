@@ -1,7 +1,7 @@
 package me.kryz.mymessage;
 
 import lombok.Getter;
-import me.kryz.mymessage.audience.BukkitAudiencesImpl;
+import me.kryz.mymessage.common.audience.BukkitAudiencesImpl;
 import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.listeners.PlayerJoinListener;
 import me.kryz.mymessage.loader.NMSLoader;

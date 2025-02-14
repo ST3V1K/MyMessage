@@ -2,25 +2,41 @@ package me.kryz.mymessage.common.tags;
 
 import me.kryz.mymessage.common.tags.roman.RomanTag;
 import me.kryz.mymessage.common.tags.smallcaps.SmallCapsTag;
+import me.kryz.mymessage.common.tags.title.TitleTag;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.Context;
-import net.kyori.adventure.text.minimessage.tag.Tag;
-import net.kyori.adventure.text.minimessage.tag.resolver.ArgumentQueue;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.function.BiFunction;
 
 public interface BaseTag {
+
+    static final Set<BaseTag> TAGS = Collections.synchronizedSet(new HashSet<>());
 
     @NotNull Component process(final @NotNull Component component);
 
     @NotNull Set<String> getNames();
 
-    @NotNull BiFunction<ArgumentQueue, Context, Tag> getFunction(final TagImpl tag);
+    static void add(final BaseTag tag) {
+        TAGS.add(tag);
+    }
 
-    static Set<BaseTag> all(){
-        return Set.of(SmallCapsTag.SMALL_CAPS_TAG,
-                RomanTag.ROMAN_TAG);
+    static boolean contains(final BaseTag tag) {
+        return TAGS.contains(tag);
+    }
+
+    static Set<BaseTag> all() {
+        return Collections.unmodifiableSet(TAGS);
+    }
+    
+    static void defaults() {
+        registerDefaultTags();
+    }
+
+    private static void registerDefaultTags() {
+        add(SmallCapsTag.SMALL_CAPS_TAG);
+        add(RomanTag.ROMAN_TAG);
+        add(TitleTag.TITLE_TAG);
     }
 }

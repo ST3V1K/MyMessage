@@ -1,27 +1,32 @@
 package me.kryz.mymessage.common.tags;
 
-import me.kryz.mymessage.common.papi.PAPIHook;
-import net.kyori.adventure.text.minimessage.tag.Tag;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
-import org.bukkit.OfflinePlayer;
 
 public final class TagsRegistration {
 
-    public static final TagResolver RESOLVER;
+    private static final TagResolver RESOLVER;
 
     static {
+        BaseTag.defaults();
         final TagResolver.Builder builder = TagResolver.builder();
-        for(BaseTag tag : BaseTag.all()){
-            builder.tag(tag.getNames(), tag.getFunction(new TagImpl(tag)));
+
+        for (final BaseTag tag : BaseTag.all()) {
+            if (tag instanceof NormalTags normalTag) {
+                builder.tag(tag.getNames(), normalTag.getFunction(new TagImpl(tag)));
+            }
         }
+
         RESOLVER = builder.build();
     }
 
     public static TagResolver register() {
-        return TagResolver.builder().resolvers(
-                RESOLVER,
-                StandardTags.defaults()
-        ).build();
+        return TagResolver.builder()
+            .resolver(RESOLVER)
+            .resolver(StandardTags.defaults())
+            .build();
+    }
+
+    private TagsRegistration() {
     }
 }

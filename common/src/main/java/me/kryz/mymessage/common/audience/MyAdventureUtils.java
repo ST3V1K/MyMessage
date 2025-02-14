@@ -1,4 +1,4 @@
-package me.kryz.mymessage.audience;
+package me.kryz.mymessage.common.audience;
 
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;

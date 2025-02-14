@@ -1,7 +1,6 @@
 package me.kryz.mymessage.listeners;
 
 import me.kryz.mymessage.MyMessage;
-import me.kryz.mymessage.loader.NMSLoader;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

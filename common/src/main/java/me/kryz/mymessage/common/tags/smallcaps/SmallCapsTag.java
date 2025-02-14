@@ -1,6 +1,6 @@
 package me.kryz.mymessage.common.tags.smallcaps;
 
-import me.kryz.mymessage.common.tags.BaseTag;
+import me.kryz.mymessage.common.tags.NormalTags;
 import me.kryz.mymessage.common.tags.TagImpl;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.BiFunction;
 
-public final class SmallCapsTag implements BaseTag {
+public final class SmallCapsTag implements NormalTags {
 
     private static final Map<Character, Character> SMALL_CAPS_MAP = new HashMap<>();
     public static final SmallCapsTag SMALL_CAPS_TAG = new SmallCapsTag();

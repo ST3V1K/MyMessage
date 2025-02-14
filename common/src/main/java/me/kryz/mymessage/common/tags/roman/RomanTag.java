@@ -1,6 +1,6 @@
 package me.kryz.mymessage.common.tags.roman;
 
-import me.kryz.mymessage.common.tags.BaseTag;
+import me.kryz.mymessage.common.tags.NormalTags;
 import me.kryz.mymessage.common.tags.TagImpl;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import java.util.Set;
 import java.util.function.BiFunction;
 
-public final class RomanTag implements BaseTag {
+public final class RomanTag implements NormalTags {
 
     private static final int[] ARABIC = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private static final String[] ROMAN = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};

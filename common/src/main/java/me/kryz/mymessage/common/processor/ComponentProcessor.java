@@ -2,14 +2,18 @@ package me.kryz.mymessage.common.processor;
 
 import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.papi.PAPIHook;
+import me.kryz.mymessage.common.tags.BaseTag;
+import me.kryz.mymessage.common.tags.PlayerTags;
 import me.kryz.mymessage.common.tags.TagsRegistration;
-import me.kryz.mymessage.common.tags.papi.PapiTag;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComponentProcessor {
 
@@ -20,9 +24,23 @@ public class ComponentProcessor {
         MINI_MESSAGE = MiniMessage.builder().tags(TagResolver.empty()).build();
     }
 
+    private static TagResolver resolvers(final OfflinePlayer player) {
+        final List<TagResolver> playerResolvers = new ArrayList<>();
+
+        for (final BaseTag tag : BaseTag.all()) {
+            if (tag instanceof PlayerTags playerTag) {
+                playerResolvers.add(playerTag.getTagResolver(player));
+            }
+        }
+
+        return TagResolver.builder()
+                .resolvers(playerResolvers)
+                .build();
+    }
+
     public static net.kyori.adventure.text.Component asMiniMessage(final String text, final Player player){
         return MINI_MESSAGE.deserialize(text,
-                PapiTag.createPapiResolver(player),
+                resolvers(player),
                 TagsRegistration.register());
     }
 
