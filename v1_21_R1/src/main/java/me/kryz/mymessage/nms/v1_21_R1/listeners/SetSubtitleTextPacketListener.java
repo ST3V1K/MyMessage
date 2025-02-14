@@ -2,7 +2,7 @@ package me.kryz.mymessage.nms.v1_21_R1.listeners;
 
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
-import me.kryz.mymessage.common.util.Prefix;
+import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.nms.v1_21_R1.ComponentSerializer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;

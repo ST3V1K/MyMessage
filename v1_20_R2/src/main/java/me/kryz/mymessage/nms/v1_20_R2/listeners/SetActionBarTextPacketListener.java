@@ -2,7 +2,7 @@ package me.kryz.mymessage.nms.v1_20_R2.listeners;
 
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
-import me.kryz.mymessage.common.util.Prefix;
+import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.nms.v1_20_R2.ComponentSerializer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
