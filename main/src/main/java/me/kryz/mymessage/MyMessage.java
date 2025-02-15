@@ -3,6 +3,7 @@ package me.kryz.mymessage;
 import lombok.Getter;
 import me.kryz.mymessage.common.audience.BukkitAudiencesImpl;
 import me.kryz.mymessage.common.Prefix;
+import me.kryz.mymessage.common.tags.BaseTag;
 import me.kryz.mymessage.listeners.PlayerJoinListener;
 import me.kryz.mymessage.loader.NMSLoader;
 import me.kryz.mymessage.logger.MyLogger;
@@ -18,6 +19,7 @@ public final class MyMessage extends JavaPlugin {
 
     @Override
     public void onEnable(){
+        BaseTag.defaults();
         loader = new NMSLoader(this);
         loader.load();
 

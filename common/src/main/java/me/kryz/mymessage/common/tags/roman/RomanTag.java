@@ -25,9 +25,8 @@ public final class RomanTag implements NormalTags {
 
     public @NotNull String toRoman(final String text){
         int integer = (int) Math.round(Double.parseDouble(text));
-        System.out.println(integer);
         if (integer <= 0 || integer > 3999) {
-            throw new IllegalArgumentException("The number must be between 1 and 3999");
+            integer = 1;
         }
         final StringBuilder result = new StringBuilder();
 

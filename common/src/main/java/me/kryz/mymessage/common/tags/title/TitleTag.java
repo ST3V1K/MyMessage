@@ -13,9 +13,12 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
-public final class TitleTag implements PlayerTags{
+public final class TitleTag implements PlayerTags {
 
     public static final TitleTag TITLE_TAG = new TitleTag();
 
@@ -24,15 +27,20 @@ public final class TitleTag implements PlayerTags{
 
     private TagResolver createTitleResolver(final OfflinePlayer player) {
         return TagResolver.resolver(getNames(), (argumentQueue, context) -> {
-            final String arguments = argumentQueue.popOr("The title tag must has the arguments.").value();
-            final String[] args = arguments.split(":");
-            final String title = args[0];
-            final String subtitle = args[1].isEmpty() ? "" : args[1];
-            final int fadeIn = NumberParser.parsePositiveInt(args[2], 20);
-            final int stay = NumberParser.parsePositiveInt(args[3], 20);
-            final int fadeOut = NumberParser.parsePositiveInt(args[4], 20);
-            final var titleComponent = Title.title(ComponentProcessor.asMiniMessage(title),
-                    ComponentProcessor.asMiniMessage(subtitle),
+            final String title = argumentQueue.popOr("The title tag must has minimum an argument.").value();
+            final List<String> list = new ArrayList<>();
+            while (argumentQueue.hasNext()){
+                list.add(argumentQueue.pop().value());
+            }
+            final String[] args = list.toArray(String[]::new);
+            System.out.println(Arrays.toString(args));
+            final String subtitle = args[0].isEmpty() ? "" : args[0];
+            final int fadeIn = NumberParser.parsePositiveInt(args[1], 20);
+            final int stay = NumberParser.parsePositiveInt(args[2], 20);
+            final int fadeOut = NumberParser.parsePositiveInt(args[3], 20);
+            final var titleComponent = Title.title(
+                    ComponentProcessor.asMiniMessage(title, (Player) player),
+                    ComponentProcessor.asMiniMessage(subtitle, (Player) player),
                     Title.Times.times(
                             Duration.ofMillis(fadeIn * 50L), // 20 * 50 = 1000ms = 1s
                             Duration.ofMillis(stay * 50L),

@@ -11,6 +11,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 public final class PapiTag implements PlayerTags{
+
+    public static final PapiTag PAPI_TAG = new PapiTag();
+
+    private PapiTag(){}
+
     private TagResolver createPapiResolver(final OfflinePlayer player) {
         return TagResolver.resolver(Set.of("papi", "placeholderapi"), (argumentQueue, context) -> {
             final String placeholder = argumentQueue.popOr("The papi tag must be a placeholder.").value();

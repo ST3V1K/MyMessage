@@ -8,13 +8,10 @@ public final class TagsRegistration {
     private static final TagResolver RESOLVER;
 
     static {
-        BaseTag.defaults();
         final TagResolver.Builder builder = TagResolver.builder();
 
-        for (final BaseTag tag : BaseTag.all()) {
-            if (tag instanceof NormalTags normalTag) {
-                builder.tag(tag.getNames(), normalTag.getFunction(new TagImpl(tag)));
-            }
+        for (final NormalTags tag : BaseTag.allNormal()) {
+            builder.tag(tag.getNames(), tag.getFunction(new TagImpl(tag)));
         }
 
         RESOLVER = builder.build();

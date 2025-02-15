@@ -15,7 +15,7 @@ allprojects {
     apply(plugin = "java")
 
     group = "me.kryz.mymessage"
-    version = "1.0.0-release"
+    version = "1.0.0-RELEASE"
 
     dependencies {
         compileOnly("net.kyori:adventure-api:4.18.0")

@@ -11,12 +11,12 @@ public final class Injector {
     public static void inject(Player player, Logger logger) {
         final ServerGamePacketListenerImpl connection = ((CraftPlayer) player).getHandle().connection;
         final Connection networkManager = connection.connection;
-        final Channel channel = networkManager.channel;;
+        final Channel channel = networkManager.channel;
         final var pipeline = channel.pipeline();
         if (pipeline.get("mymessage_listener") == null) {
             pipeline.addBefore("packet_handler", "mymessage_listener",
                     new PacketDispatcher(logger, player.getUniqueId(), player.getName()));
-            System.out.println(pipeline.get("mymessage_listener"));
+            System.out.println("Pipeline de MyMessage:" + pipeline.get("mymessage_listener"));
         }
     }
 }

@@ -1,19 +1,16 @@
 package me.kryz.mymessage.common.processor;
 
+import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.papi.PAPIHook;
 import me.kryz.mymessage.common.tags.BaseTag;
 import me.kryz.mymessage.common.tags.PlayerTags;
 import me.kryz.mymessage.common.tags.TagsRegistration;
-import me.kryz.mymessage.common.Prefix;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ComponentProcessor {
 
@@ -25,17 +22,13 @@ public class ComponentProcessor {
     }
 
     private static TagResolver resolvers(final OfflinePlayer player) {
-        final List<TagResolver> playerResolvers = new ArrayList<>();
+        final TagResolver.Builder builder = TagResolver.builder();
 
-        for (final BaseTag tag : BaseTag.all()) {
-            if (tag instanceof PlayerTags playerTag) {
-                playerResolvers.add(playerTag.getTagResolver(player));
-            }
+        for (final PlayerTags tag : BaseTag.allPlayers()) {
+            builder.resolver(tag.getTagResolver(player));
         }
 
-        return TagResolver.builder()
-                .resolvers(playerResolvers)
-                .build();
+        return builder.build();
     }
 
     public static net.kyori.adventure.text.Component asMiniMessage(final String text, final Player player){
@@ -49,14 +42,12 @@ public class ComponentProcessor {
                 TagsRegistration.register());
     }
 
-//    public static net.kyori.adventure.text.Component asMiniMessage(final String text, final OfflinePlayer player){
-//        if(player.isOnline()){
-//            return asMiniMessage(text, player);
-//        }
-//        return MINI_MESSAGE.deserialize(text,
-//                PapiTag.createPapiResolver(player),
-//                TagsRegistration.register());
-//    }
+    public static net.kyori.adventure.text.Component asMiniMessage(final String text, final OfflinePlayer player){
+        if(!player.isOnline()) return MINI_MESSAGE.deserialize(text,
+                resolvers(player),
+                TagsRegistration.register());
+        return asMiniMessage(text, (Player) player);
+    }
 
     public static Component textProcessor(final String text, final Player player){
         final var removed = PAPIHook.formatString(removeFirstSequence(text), player);
