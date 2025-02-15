@@ -33,14 +33,13 @@ public final class TitleTag implements PlayerTags {
                 list.add(argumentQueue.pop().value());
             }
             final String[] args = list.toArray(String[]::new);
-            System.out.println(Arrays.toString(args));
-            final String subtitle = args[0].isEmpty() ? "" : args[0];
+            final String subtitle = args[0];
             final int fadeIn = NumberParser.parsePositiveInt(args[1], 20);
             final int stay = NumberParser.parsePositiveInt(args[2], 20);
             final int fadeOut = NumberParser.parsePositiveInt(args[3], 20);
             final var titleComponent = Title.title(
                     ComponentProcessor.asMiniMessage(title, (Player) player),
-                    ComponentProcessor.asMiniMessage(subtitle, (Player) player),
+                    ComponentProcessor.asMiniMessage(subtitle == null ? "" : subtitle, (Player) player),
                     Title.Times.times(
                             Duration.ofMillis(fadeIn * 50L), // 20 * 50 = 1000ms = 1s
                             Duration.ofMillis(stay * 50L),
