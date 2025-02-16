@@ -25,7 +25,7 @@ public final class NMSLoader {
 
     public void load(){
         final var log = "Enabling NMS packets for {}";
-        final var version = MinecraftVersion.getServerVersionEnum().getFormattedVersion();
+        final var version = MinecraftVersion.getFormatted();
         try {
             MyLogger.getLogger().info(log, version);
             packetHandler = (PacketHandler) ReflectionUtils.getClass(searchClass(version, "PacketHandler"))
