@@ -1,9 +1,10 @@
-package me.kryz.mymessage.nms.v1_20_R3.listeners;
+package me.kryz.mymessage.nms.v1_20_R5.listeners;
 
-import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
-import me.kryz.mymessage.nms.v1_20_R3.ComponentSerializer;
+import me.kryz.mymessage.common.Prefix;
+import me.kryz.mymessage.nms.v1_20_R5.ComponentSerializer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import org.bukkit.entity.Player;
 
@@ -17,7 +18,7 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
     @Override
     public void write(Player player, PacketEvent<ClientboundSystemChatPacket> packetEvent) {
         final var packet = packetEvent.getPacket();
-        final var component = packet.a();
+        final Component component = packet.content();
         if(!Prefix.startsWith(component.getString()))
             return;
         final var parsed = ComponentSerializer.textProcessor(component.getString(), player);

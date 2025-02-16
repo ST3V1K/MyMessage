@@ -1,6 +1,5 @@
 package me.kryz.mymessage.utils;
 
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -46,10 +45,21 @@ public final class ReflectionUtils {
                 final Field field = clazz.getDeclaredField(fieldName);
                 field.setAccessible(true);
                 return field;
-            } catch (NoSuchFieldException e) {
-                throw new RuntimeException("Campo no encontrado: " + fieldName + " en " + clazz.getName(), e);
+            } catch (NoSuchFieldException ignored) {
+//                throw new RuntimeException("Campo no encontrado: " + fieldName + " en " + clazz.getName(), e);
             }
+            return null;
         });
+    }
+
+    public static Field getFields(final Class<?> clazz, final String... fields){
+        Field field = null;
+        for (final String s : fields) {
+            final var f = getField(clazz, s);
+            if(f == null) continue;
+            field = f;
+        }
+        return field;
     }
 
     /**

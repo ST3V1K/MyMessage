@@ -6,6 +6,8 @@ import org.bukkit.event.server.ServerLoadEvent;
 
 public interface CommandBrigadierAdaptation extends Listener {
 
+    String[] aliases = {"mm", "mymsg"};
+
     @EventHandler
     void onLoad(ServerLoadEvent event);
 }

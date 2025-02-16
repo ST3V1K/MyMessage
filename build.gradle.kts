@@ -30,6 +30,7 @@ dependencies {
     implementation(project(":v1_21_R1"))
     implementation(project(":v1_21_R2"))
     implementation(project(":v1_21_R3"))
+    implementation(project(":v1_20_R5"))
     implementation(project(":v1_20_R3"))
     implementation(project(":v1_20_R2"))
     implementation("net.kyori:adventure-api:4.18.0")

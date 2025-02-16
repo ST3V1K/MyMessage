@@ -5,7 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 @Getter
 public enum MinecraftVersion {
+//    v1_20_R2("1.20.2", "v1_20_R2"),
     v1_20_R3("1.20.3, 1.20.4", "v1_20_R3"),
+    v1_20_R5("1.20.5, 1.20.6", "v1_20_R5"),
     v1_21_R1("1.21.0, 1.21.1", "v1_21_R1"),
     v1_21_R2("1.21.2, 1.21.3", "v1_21_R2"),
     v1_21_R3("1.21.4", "v1_21_R3"),
