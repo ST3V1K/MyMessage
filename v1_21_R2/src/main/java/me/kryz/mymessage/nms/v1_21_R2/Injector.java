@@ -16,7 +16,6 @@ public final class Injector {
         if (pipeline.get("mymessage_listener") == null) {
             pipeline.addBefore("packet_handler", "mymessage_listener",
                     new PacketDispatcher(logger, player.getUniqueId(), player.getName()));
-            System.out.println("Pipeline de MyMessage:" + pipeline.get("mymessage_listener"));
         }
     }
 }
