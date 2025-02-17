@@ -1,5 +1,6 @@
 package me.kryz.mymessage.common.tags;
 
+import me.kryz.mymessage.common.tags.actionbar.ActionBarTag;
 import me.kryz.mymessage.common.tags.papi.PapiTag;
 import me.kryz.mymessage.common.tags.roman.RomanTag;
 import me.kryz.mymessage.common.tags.smallcaps.SmallCapsTag;
@@ -43,5 +44,6 @@ public interface BaseTag {
         addNormal(RomanTag.ROMAN_TAG);
         addPlayer(TitleTag.TITLE_TAG);
         addPlayer(PapiTag.PAPI_TAG);
+        addPlayer(ActionBarTag.ACTION_BAR_TAG);
     }
 }

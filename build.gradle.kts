@@ -49,7 +49,7 @@ tasks.withType<JavaCompile> {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21)) // Ajusta según tu versión de Java.
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 

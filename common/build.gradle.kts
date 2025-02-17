@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly("net.luckperms:api:5.4")
     compileOnly ("me.clip:placeholderapi:2.11.6")
     compileOnly("org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT") // The Spigot API with no shadowing. Requires the OSS repo.
     compileOnly("org.spigotmc:spigot:1.20.2-R0.1-SNAPSHOT") // The full Spigot server with no shadowing. Requires mavenLocal.

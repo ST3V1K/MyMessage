@@ -1,13 +1,12 @@
 package me.kryz.mymessage;
 
 import lombok.Getter;
-import me.kryz.mymessage.common.audience.BukkitAudiencesImpl;
 import me.kryz.mymessage.common.Prefix;
+import me.kryz.mymessage.common.audience.BukkitAudiencesImpl;
 import me.kryz.mymessage.common.tags.BaseTag;
 import me.kryz.mymessage.listeners.PlayerJoinListener;
 import me.kryz.mymessage.loader.NMSLoader;
 import me.kryz.mymessage.logger.MyLogger;
-
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,6 +41,7 @@ public final class MyMessage extends JavaPlugin {
 
     public void loadConfig(){
         reloadConfig();
+//        tagGroupManager.loadGroups(getConfig().getConfigurationSection("groups"));
         final String prefix = this.getConfig().getString("prefix");
         Prefix.setPrefix(prefix);
     }
