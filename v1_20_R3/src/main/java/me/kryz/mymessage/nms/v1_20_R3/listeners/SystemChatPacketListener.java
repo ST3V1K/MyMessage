@@ -4,6 +4,7 @@ import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
 import me.kryz.mymessage.nms.v1_20_R3.ComponentSerializer;
+import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import org.bukkit.entity.Player;
 
@@ -20,9 +21,10 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
         final var component = packet.a();
         if(!Prefix.startsWith(component.getString()))
             return;
-        final var parsed = ComponentSerializer.textProcessor(component.getString(), player);
-        final var toLegacy = ComponentSerializer.asLegacy(parsed);
-        final var newPacket = new ClientboundSystemChatPacket(toLegacy,false);
+        final String parsed = ComponentSerializer.asJson(component);
+        final Component processed = ComponentSerializer.process(parsed, player);
+        final var toLegacy = ComponentSerializer.asLegacy(processed);
+        final var newPacket = new ClientboundSystemChatPacket(toLegacy, packet.d());
         packetEvent.setPacket(newPacket);
     }
 

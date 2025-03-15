@@ -13,9 +13,17 @@ import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.level.entity.Visibility;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +41,7 @@ public final class CommandImpl implements CommandBrigadierAdaptation {
         final var command = literal("mymessage")
                 .then(
                         literal("reload")
+                                .requires(source -> source.getSender().hasPermission("mymessage.reload"))
                                 .executes(this::executeReload)
                 )
                 .then(

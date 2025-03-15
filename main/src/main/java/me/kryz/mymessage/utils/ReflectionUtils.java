@@ -92,9 +92,10 @@ public final class ReflectionUtils {
      * @return El valor del campo.
      * @throws RuntimeException Si ocurre un error al obtener el valor.
      */
-    public static Object getFieldValue(final Field field, final Object object) {
+    @SuppressWarnings("unchecked")
+    public static <T> T getFieldValue(final Field field, final Object object) {
         try {
-            return field.get(object);
+            return (T) field.get(object);
         } catch (IllegalAccessException e) {
             throw new RuntimeException("Error al obtener el valor del campo: " + field.getName(), e);
         }

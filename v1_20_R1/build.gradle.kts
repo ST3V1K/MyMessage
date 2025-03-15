@@ -2,15 +2,18 @@ plugins {
     id("java")
 }
 
+group = "me.kryz.mymessage"
+version = "1.0.0-release"
+
 repositories {
-    mavenLocal()
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
     compileOnly(project(":common"))
     compileOnly(project(":main"))
-    compileOnly("org.spigotmc:spigot:1.20.2-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot:1.20.1-R0.1-SNAPSHOT")
 }
 
 java {

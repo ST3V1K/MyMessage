@@ -9,10 +9,11 @@ public final class Prefix {
     public static void setPrefix(String prefix) { Prefix.prefix = prefix;}
 
     public static boolean startsWith(String message) {
+        if(message == null) return false;
         return message.startsWith(prefix);
     }
 
     public static String getPrefix() {
-        return prefix == null ? "$" : prefix;
+        return prefix == null || prefix.isEmpty() ? "$" : prefix;
     }
 }

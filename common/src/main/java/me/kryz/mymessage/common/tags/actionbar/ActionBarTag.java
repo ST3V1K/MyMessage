@@ -1,6 +1,5 @@
 package me.kryz.mymessage.common.tags.actionbar;
 
-import me.kryz.mymessage.common.audience.MyAdventureUtils;
 import me.kryz.mymessage.common.processor.ComponentProcessor;
 import me.kryz.mymessage.common.tags.PlayerTags;
 import net.kyori.adventure.text.Component;
@@ -33,7 +32,7 @@ public final class ActionBarTag implements PlayerTags {
         return TagResolver.resolver(getNames(), ((argumentQueue, context) -> {
             final String text = argumentQueue.popOr("Put a message").value();
             final var component = ComponentProcessor.asMiniMessage(text, player);
-            MyAdventureUtils.player((Player) player).sendActionBar(component);
+            ((Player) player).sendActionBar(component);
             return Tag.preProcessParsed("");
         }));
     }

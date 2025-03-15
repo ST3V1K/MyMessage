@@ -1,4 +1,4 @@
-package me.kryz.mymessage.nms.v1_20_R5;
+package me.kryz.mymessage.nms.remapped;
 
 import me.kryz.mymessage.common.processor.ComponentProcessor;
 import net.minecraft.network.chat.Component;

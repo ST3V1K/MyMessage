@@ -2,7 +2,7 @@ name: "MyMessage"
 version: ${version}
 main: me.kryz.mymessage.MyMessage
 author: Krysz_
-api-version: 1.20
+api-version: "1.20"
 load: STARTUP
 depend:
   - PlaceholderAPI

@@ -1,6 +1,5 @@
 package me.kryz.mymessage.common.tags.title;
 
-import me.kryz.mymessage.common.audience.MyAdventureUtils;
 import me.kryz.mymessage.common.processor.ComponentProcessor;
 import me.kryz.mymessage.common.tags.PlayerTags;
 import me.kryz.mymessage.common.util.NumberParser;
@@ -44,7 +43,7 @@ public final class TitleTag implements PlayerTags {
                             Duration.ofMillis(stay * 50L),
                             Duration.ofMillis(fadeOut * 50L)
                     ));
-            MyAdventureUtils.player((Player) player).showTitle(titleComponent);
+            ((Player)player).showTitle(titleComponent);
             return Tag.preProcessParsed("");
         });
     }

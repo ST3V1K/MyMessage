@@ -11,16 +11,18 @@ repositories {
     mavenCentral()
 }
 
-allprojects {
+subprojects {
     apply(plugin = "java")
+    apply(plugin = "io.github.goooler.shadow")
 
     group = "me.kryz.mymessage"
-    version = "1.0.0-RELEASE"
+    version = "1.0.1-RELEASE"
 
     dependencies {
         compileOnly("net.kyori:adventure-api:4.18.0")
         compileOnly("net.kyori:adventure-text-minimessage:4.18.0")
         compileOnly("net.kyori:adventure-platform-bukkit:4.3.4")
+        compileOnly("net.kyori:adventure-text-serializer-plain:4.19.0")
     }
 }
 
@@ -33,8 +35,10 @@ dependencies {
     implementation(project(":v1_20_R5"))
     implementation(project(":v1_20_R3"))
     implementation(project(":v1_20_R2"))
-    implementation("net.kyori:adventure-api:4.18.0")
-    implementation("net.kyori:adventure-text-minimessage:4.18.0")
+    implementation(project(":v1_20_R1"))
+//    implementation("net.kyori:adventure-api:4.18.0")
+//    implementation("net.kyori:adventure-text-serializer-plain:4.19.0")
+//    implementation("net.kyori:adventure-text-minimessage:4.18.0")
     implementation("net.kyori:adventure-platform-bukkit:4.3.4")
 
     implementation("org.slf4j:slf4j-api:2.0.7")
@@ -49,13 +53,19 @@ tasks.withType<JavaCompile> {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 tasks.assemble {
     dependsOn(tasks.reobfJar)
 }
+
+//tasks {
+//    shadowJar {
+//        relocate("net.kyori", "me.kryz.mymessage.kyori")
+//    }
+//}
 
 tasks {
     processResources {
@@ -64,11 +74,5 @@ tasks {
 
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
-    }
-}
-
-tasks {
-    shadowJar {
-        relocate("net.kyori", "me.kryz.mymessage.adventure")
     }
 }

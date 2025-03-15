@@ -1,9 +1,9 @@
-package me.kryz.mymessage.nms.v1_20_R5.listeners;
+package me.kryz.mymessage.nms.remapped.listeners;
 
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
 import me.kryz.mymessage.common.Prefix;
-import me.kryz.mymessage.nms.v1_20_R5.ComponentSerializer;
+import me.kryz.mymessage.nms.remapped.ComponentSerializer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerChatPacket;
 import org.bukkit.entity.Player;

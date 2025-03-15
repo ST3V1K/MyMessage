@@ -26,7 +26,7 @@ dependencies {
     compileOnly("net.kyori:adventure-platform-bukkit:4.3.4")
     compileOnly("net.kyori:adventure-text-serializer-gson:4.18.0")
 
-    compileOnly ("io.papermc.paper:paper-api:1.21.3-R0.1-SNAPSHOT")
+    compileOnly ("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly ("me.clip:placeholderapi:2.11.6")
 
     compileOnly("org.projectlombok:lombok:1.18.36")
@@ -41,6 +41,12 @@ tasks {
 
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 

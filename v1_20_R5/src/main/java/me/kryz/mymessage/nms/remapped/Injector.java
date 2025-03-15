@@ -1,4 +1,4 @@
-package me.kryz.mymessage.nms.v1_20_R5;
+package me.kryz.mymessage.nms.remapped;
 
 import io.netty.channel.Channel;
 import net.minecraft.network.Connection;

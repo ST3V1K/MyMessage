@@ -21,8 +21,8 @@ public final class CommandImpl implements CommandBrigadierAdaptation {
     @Override
     @EventHandler
     public void onLoad(ServerLoadEvent event) {
-        final var  server = (MinecraftServer) ((CraftServer) Bukkit.getServer()).getServer();
-        final var dispatcher = server.aE();
+        final var server = (MinecraftServer) ((CraftServer) Bukkit.getServer()).getServer();
+        final var dispatcher = server.vanillaCommandDispatcher;
         final CommandDispatcher<CommandListenerWrapper> source = dispatcher.a();
         register(source);
     }

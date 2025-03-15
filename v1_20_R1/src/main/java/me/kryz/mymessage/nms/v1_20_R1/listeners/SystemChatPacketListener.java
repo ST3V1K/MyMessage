@@ -1,10 +1,10 @@
-package me.kryz.mymessage.nms.v1_20_R2.listeners;
+package me.kryz.mymessage.nms.v1_20_R1.listeners;
 
 import me.kryz.mymessage.common.Prefix;
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
 import me.kryz.mymessage.common.serializer.parser.MinecraftJsonParser;
-import me.kryz.mymessage.nms.v1_20_R2.ComponentSerializer;
+import me.kryz.mymessage.nms.v1_20_R1.ComponentSerializer;
 import me.kryz.mymessage.utils.ReflectionUtils;
 import net.kyori.adventure.text.Component;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
@@ -20,6 +20,7 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
     @Override
     public void write(Player player, PacketEvent<ClientboundSystemChatPacket> packetEvent) {
         final var packet = packetEvent.getPacket();
+        //
         // Content
         final var f = ReflectionUtils.getField(getPacketClass(), "adventure$content");
         final var o = packet.content();
@@ -27,7 +28,6 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
         if (s == null) {
             s = o;
         }
-        //
         // Plain String
         String text;
         if(s instanceof String str) {
@@ -37,7 +37,6 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
         }
         if(!Prefix.startsWith(text))
             return;
-        //
         // Json String
         String json;
         if (s instanceof String j) {

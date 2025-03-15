@@ -1,4 +1,4 @@
-package me.kryz.mymessage.nms.v1_20_R5;
+package me.kryz.mymessage.nms.remapped;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;

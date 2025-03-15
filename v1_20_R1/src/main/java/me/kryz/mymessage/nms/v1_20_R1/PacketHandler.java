@@ -1,4 +1,4 @@
-package me.kryz.mymessage.nms.v1_20_R5;
+package me.kryz.mymessage.nms.v1_20_R1;
 
 import org.bukkit.entity.Player;
 import org.slf4j.Logger;

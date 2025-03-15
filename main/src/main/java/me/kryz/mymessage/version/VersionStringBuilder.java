@@ -9,7 +9,7 @@ public final class VersionStringBuilder {
         final var stringBuilder = new StringBuilder();
         for(final var ver : MinecraftVersion.values()){
             if(ver == MinecraftVersion.UNSUPPORTED) continue;
-            stringBuilder.append(ver.getVersion()).append(", ");
+            stringBuilder.append(ver.version()).append(", ");
         }
         if (!stringBuilder.isEmpty()) {
             stringBuilder.setLength(stringBuilder.length() - 2);

@@ -1,4 +1,4 @@
-package me.kryz.mymessage.nms.v1_20_R2;
+package me.kryz.mymessage.nms.v1_20_R1;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
@@ -11,11 +11,10 @@ import me.kryz.mymessage.common.packet.command.CommandBrigadierAdaptation;
 import net.minecraft.commands.CommandListenerWrapper;
 import net.minecraft.server.MinecraftServer;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.server.ServerLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 public final class CommandImpl implements CommandBrigadierAdaptation {
     @Override
@@ -46,14 +45,14 @@ public final class CommandImpl implements CommandBrigadierAdaptation {
         }
     }
 
-    private int executeHelp(@NotNull CommandContext<CommandListenerWrapper> context) {
+    private int executeHelp(CommandContext<CommandListenerWrapper> context) {
         MyMessage message = JavaPlugin.getPlugin(MyMessage.class);
         String help = message.getConfig().getString("help");
         (context.getSource()).a(() -> ComponentSerializer.asLegacy(help), false);
         return Command.SINGLE_SUCCESS;
     }
 
-    private int executeReload(@NotNull CommandContext<CommandListenerWrapper> context) {
+    private int executeReload(CommandContext<CommandListenerWrapper> context) {
         final MyMessage message = JavaPlugin.getPlugin(MyMessage.class);
         if(context.getSource().getBukkitSender().hasPermission("mymessage.reload")){
             message.loadConfig();

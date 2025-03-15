@@ -1,6 +1,6 @@
-package me.kryz.mymessage.nms.v1_20_R5;
+package me.kryz.mymessage.nms.remapped;
 
-import me.kryz.mymessage.nms.v1_20_R5.listeners.*;
+import me.kryz.mymessage.nms.remapped.listeners.*;
 import org.bukkit.plugin.Plugin;
 
 public final class PacketRegister implements me.kryz.mymessage.common.packet.PacketRegister {

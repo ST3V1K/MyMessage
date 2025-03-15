@@ -1,9 +1,10 @@
-package me.kryz.mymessage.nms.v1_20_R5.listeners;
+package me.kryz.mymessage.nms.remapped.listeners;
 
+import io.papermc.paper.adventure.PaperAdventure;
 import me.kryz.mymessage.common.packet.PacketEvent;
 import me.kryz.mymessage.common.packet.PacketListener;
 import me.kryz.mymessage.common.Prefix;
-import me.kryz.mymessage.nms.v1_20_R5.ComponentSerializer;
+import me.kryz.mymessage.nms.remapped.ComponentSerializer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import org.bukkit.entity.Player;
@@ -21,7 +22,12 @@ public final class SystemChatPacketListener implements PacketListener<Clientboun
         final Component component = packet.content();
         if(!Prefix.startsWith(component.getString()))
             return;
-        final var parsed = ComponentSerializer.textProcessor(component.getString(), player);
+        final var parsed = ComponentSerializer.process(
+                PaperAdventure.asJsonString(
+                        PaperAdventure.asAdventure(component),
+                        null
+                )
+                , player);
         final var toLegacy = ComponentSerializer.asLegacy(parsed);
         final var newPacket = new ClientboundSystemChatPacket(toLegacy,false);
         packetEvent.setPacket(newPacket);
