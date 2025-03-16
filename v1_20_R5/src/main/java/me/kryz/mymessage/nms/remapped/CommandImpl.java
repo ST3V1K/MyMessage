@@ -54,7 +54,7 @@ public final class CommandImpl implements CommandBrigadierAdaptation {
 
     private int executeReload(CommandContext<CommandSourceStack> context) {
         final MyMessage message = JavaPlugin.getPlugin(MyMessage.class);
-        if(context.getSource().getSender().hasPermission("mymessage.reload")){
+        if(context.getSource().getBukkitSender().hasPermission("mymessage.reload")){
             message.loadConfig();
             final String msg = message.getConfig().getString("reload", "<green>Plugin reloaded");
             context.getSource().sendSuccess(() -> ComponentSerializer.asLegacy(msg), false);

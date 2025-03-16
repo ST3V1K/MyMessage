@@ -6,6 +6,7 @@ import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.slf4j.Logger;
+
 public final class Injector {
 
     public static void inject(Player player, Logger logger) {

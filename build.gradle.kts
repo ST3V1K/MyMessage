@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.14"
+//    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16"
     id("io.github.goooler.shadow") version "8.1.7"
 }
 
@@ -10,6 +10,8 @@ version = "1.0.0-release"
 repositories {
     mavenCentral()
 }
+
+//paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
 
 subprojects {
     apply(plugin = "java")
@@ -36,15 +38,11 @@ dependencies {
     implementation(project(":v1_20_R3"))
     implementation(project(":v1_20_R2"))
     implementation(project(":v1_20_R1"))
-//    implementation("net.kyori:adventure-api:4.18.0")
-//    implementation("net.kyori:adventure-text-serializer-plain:4.19.0")
-//    implementation("net.kyori:adventure-text-minimessage:4.18.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.3.4")
 
     implementation("org.slf4j:slf4j-api:2.0.7")
 
     implementation("org.jetbrains:annotations:24.0.0")
-    paperweight.paperDevBundle("1.21.3-R0.1-SNAPSHOT")
+//    paperweight.paperDevBundle("1.21.3-R0.1-SNAPSHOT")
 }
 
 tasks.withType<JavaCompile> {
@@ -53,19 +51,9 @@ tasks.withType<JavaCompile> {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
-
-tasks.assemble {
-    dependsOn(tasks.reobfJar)
-}
-
-//tasks {
-//    shadowJar {
-//        relocate("net.kyori", "me.kryz.mymessage.kyori")
-//    }
-//}
 
 tasks {
     processResources {

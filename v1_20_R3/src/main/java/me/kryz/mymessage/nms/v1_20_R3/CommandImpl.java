@@ -6,7 +6,6 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.tree.CommandNode;
 import me.kryz.mymessage.MyMessage;
 import me.kryz.mymessage.common.packet.command.CommandBrigadierAdaptation;
 import net.minecraft.commands.CommandListenerWrapper;

@@ -1,9 +1,7 @@
 package me.kryz.mymessage.version;
 
-import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
-@Getter
 public record MinecraftVersion(String version, String formattedVersion) {
     public static final MinecraftVersion v1_20_R1 = new MinecraftVersion("1.20, 1.20.1", "v1_20_R1");
     public static final MinecraftVersion v1_20_R2 = new MinecraftVersion("1.20.2", "v1_20_R2");
