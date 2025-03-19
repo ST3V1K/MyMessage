@@ -6,7 +6,9 @@ public final class Prefix {
     public Prefix() {
     }
 
-    public static void setPrefix(String prefix) { Prefix.prefix = prefix;}
+    public static void setPrefix(String pr) {
+        prefix = pr;
+    }
 
     public static boolean startsWith(String message) {
         if(message == null) return false;
@@ -14,6 +16,6 @@ public final class Prefix {
     }
 
     public static String getPrefix() {
-        return prefix == null || prefix.isEmpty() ? "$" : prefix;
+        return prefix;
     }
 }

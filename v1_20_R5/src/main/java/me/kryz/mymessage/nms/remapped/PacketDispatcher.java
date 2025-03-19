@@ -35,7 +35,8 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
     public PacketDispatcher(final Logger logger, final UUID uuid, final String name) {
         this.logger = logger;
         this.playerName = name;
-        this.playerUUID = uuid;;
+        this.playerUUID = uuid;
+        ;
     }
 
     public static <T> void registrar(final PacketListener<T> packetListener, final Plugin plugin) {
@@ -57,10 +58,6 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        if(!isPackets(msg)){
-            super.write(ctx, msg, promise);
-            return;
-        }
         handleWrite(ctx, msg, promise);
     }
 
@@ -76,7 +73,8 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
                 playerUUID = player.getUniqueId();
                 logger.info("[Packet-Interceptor] Found UUID for {} after packet listener initializer", playerName);
             } else {
-                logger.warn("[Packet-Interceptor] No player found for {} in {}, is the player online?", playerName, packet.getClass().getSimpleName()); ;
+                logger.warn("[Packet-Interceptor] No player found for {} in {}, is the player online?", playerName, packet.getClass().getSimpleName());
+                ;
                 super.write(ctx, packet, promise);
                 return;
             }
@@ -150,10 +148,5 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
                 super.channelRead(ctx, event.getPacket());
             }
         }
-    }
-
-    private boolean isPackets(final Object msg){
-        return msg instanceof ClientboundPlayerChatPacket ||
-                msg instanceof ClientboundSystemChatPacket;
     }
 }

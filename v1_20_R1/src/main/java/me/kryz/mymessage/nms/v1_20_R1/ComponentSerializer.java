@@ -23,4 +23,7 @@ public final class ComponentSerializer extends ComponentProcessor {
     public static String asJson(Component component){
         return GSON_COMPONENT_SERIALIZER.serialize(component);
     }
+    public static String asJson(IChatBaseComponent component){
+        return IChatBaseComponent.ChatSerializer.a(component);
+    }
 }

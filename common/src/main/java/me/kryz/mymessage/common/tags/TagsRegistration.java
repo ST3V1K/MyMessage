@@ -1,6 +1,7 @@
 package me.kryz.mymessage.common.tags;
 
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 
 public final class TagsRegistration {
 
@@ -19,11 +20,7 @@ public final class TagsRegistration {
     public static TagResolver register() {
         return TagResolver.builder()
                 .resolver(RESOLVER)
-//                .resolver(StandardTags.hoverEvent())
-//                .resolver(StandardTags.clickEvent())
-//                .resolver(StandardTags.translatable())
-//                .resolver(StandardTags.translatableFallback())
-//                .resolver(StandardTags.defaults())
+                .resolvers(StandardTags.defaults())
                 .build();
     }
 

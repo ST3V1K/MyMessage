@@ -36,7 +36,6 @@ public final class MyMessage extends JavaPlugin {
 
     public void loadConfig(){
         reloadConfig();
-//        tagGroupManager.loadGroups(getConfig().getConfigurationSection("groups"));
         final String prefix = this.getConfig().getString("prefix");
         Prefix.setPrefix(prefix);
     }

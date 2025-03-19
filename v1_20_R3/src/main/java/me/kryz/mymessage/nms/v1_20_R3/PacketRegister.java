@@ -12,5 +12,6 @@ public final class PacketRegister implements me.kryz.mymessage.common.packet.Pac
         PacketDispatcher.registrar(new SetTitleTextPacketListener(), plugin);
         PacketDispatcher.registrar(new SetSubtitleTextPacketListener(), plugin);
         PacketDispatcher.registrar(new SetActionBarTextPacketListener(), plugin);
+        PacketDispatcher.registrar(new BossEventPacketListener(), plugin);
     }
 }

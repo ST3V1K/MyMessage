@@ -57,10 +57,6 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        if(!isPackets(msg)){
-            super.write(ctx, msg, promise);
-            return;
-        }
         handleWrite(ctx, msg, promise);
     }
 
@@ -150,10 +146,5 @@ public final class PacketDispatcher extends ChannelDuplexHandler {
                 super.channelRead(ctx, event.getPacket());
             }
         }
-    }
-
-    private boolean isPackets(final Object msg){
-        return msg instanceof ClientboundPlayerChatPacket ||
-                msg instanceof ClientboundSystemChatPacket;
     }
 }

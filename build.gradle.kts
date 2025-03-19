@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.kryz.mymessage"
-version = "1.0.0-release"
+version = "1.0.2-release"
 
 repositories {
     mavenCentral()
@@ -31,9 +31,6 @@ subprojects {
 dependencies {
     implementation(project(":common"))
     implementation(project(":main"))
-    implementation(project(":v1_21_R1"))
-    implementation(project(":v1_21_R2"))
-    implementation(project(":v1_21_R3"))
     implementation(project(":v1_20_R5"))
     implementation(project(":v1_20_R3"))
     implementation(project(":v1_20_R2"))
@@ -41,8 +38,8 @@ dependencies {
 
     implementation("org.slf4j:slf4j-api:2.0.7")
 
+    implementation("net.kyori:adventure-text-minimessage:4.18.0")
     implementation("org.jetbrains:annotations:24.0.0")
-//    paperweight.paperDevBundle("1.21.3-R0.1-SNAPSHOT")
 }
 
 tasks.withType<JavaCompile> {

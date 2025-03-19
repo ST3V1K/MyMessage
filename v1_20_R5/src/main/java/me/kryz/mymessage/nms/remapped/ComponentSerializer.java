@@ -20,4 +20,7 @@ public final class ComponentSerializer extends ComponentProcessor {
     public static String asJson(net.kyori.adventure.text.Component component){
         return GSON_COMPONENT_SERIALIZER.serialize(component);
     }
+    public static String asJson(Component component){
+        return Component.Serializer.toJson(component, CraftRegistry.getMinecraftRegistry());
+    }
 }

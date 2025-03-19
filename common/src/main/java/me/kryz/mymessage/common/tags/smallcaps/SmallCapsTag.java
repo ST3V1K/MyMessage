@@ -50,8 +50,8 @@ public final class SmallCapsTag implements NormalTags {
     }
 
     private @NotNull String transform(final @NotNull String text) {
-        StringBuilder result = new StringBuilder();
-        for (char c : text.toCharArray()) {
+        final StringBuilder result = new StringBuilder();
+        for (final char c : text.toCharArray()) {
             result.append(SMALL_CAPS_MAP.getOrDefault(c, c));
         }
         return result.toString();
@@ -60,6 +60,7 @@ public final class SmallCapsTag implements NormalTags {
     private @NotNull TextReplacementConfig replacementConfig() {
         final TextReplacementConfig.Builder config = TextReplacementConfig.builder();
         config.match("[A-Za-zÀ-ÿ]").replacement((matchResult, builder) -> {
+            final String tex = matchResult.group(0);
             final String text = this.transform(matchResult.group());
             return Component.text().content(text);
         });
