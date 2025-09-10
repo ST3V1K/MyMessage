@@ -21,6 +21,8 @@ subprojects {
     version = "1.0.1-RELEASE"
 
     dependencies {
+        compileOnly("org.jetbrains:annotations:26.0.2")
+
         compileOnly("net.kyori:adventure-api:4.18.0")
         compileOnly("net.kyori:adventure-text-minimessage:4.18.0")
         compileOnly("net.kyori:adventure-platform-bukkit:4.3.4")
@@ -35,6 +37,8 @@ dependencies {
     implementation(project(":v1_20_R3"))
     implementation(project(":v1_20_R2"))
     implementation(project(":v1_20_R1"))
+    implementation(project(":v1_21_R3"))
+    implementation(project(":v1_21_R5"))
 
     implementation("org.slf4j:slf4j-api:2.0.7")
 
