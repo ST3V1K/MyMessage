@@ -2,6 +2,7 @@ plugins {
     id("java")
 //    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16"
     id("io.github.goooler.shadow") version "8.1.7"
+    id("xyz.jpenilla.run-paper") version "3.0.0"
 }
 
 group = "me.kryz.mymessage"
@@ -62,6 +63,12 @@ tasks {
             expand("version" to project.version)
 
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        }
+    }
+    runServer {
+        minecraftVersion("1.21.8")
+        downloadPlugins {
+            modrinth("placeholderapi", "2.11.6")
         }
     }
 }

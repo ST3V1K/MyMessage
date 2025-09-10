@@ -2,9 +2,6 @@ plugins {
     id("java")
 }
 
-group = "me.kryz.mymessage"
-version = "1.0.0-release"
-
 repositories {
     mavenCentral()
     maven {

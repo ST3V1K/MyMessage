@@ -16,12 +16,10 @@ public final class PlayerChatPacketListener implements PacketListener<Clientboun
     @Override
     public void write(Player player, PacketEvent<ClientboundPlayerChatPacket> packetEvent) {
         final var packet = packetEvent.getPacket();
-        final Component unsigned = packet.unsignedContent();
-        if(unsigned == null)
+        final String content = packet.body().content();
+        if(!Prefix.startsWith(content))
             return;
-        if(!Prefix.startsWith(unsigned.getString()))
-            return;
-        final var parsed = ComponentSerializer.textProcessor(unsigned.getString(), player);
+        final var parsed = ComponentSerializer.textProcessor(content, player);
         final var toLegacy = ComponentSerializer.asLegacy(parsed);
 
         final var newPacket = new ClientboundPlayerChatPacket(packet.globalIndex(),

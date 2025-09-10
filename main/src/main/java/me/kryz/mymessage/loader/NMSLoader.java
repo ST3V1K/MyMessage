@@ -24,10 +24,10 @@ public final class NMSLoader {
         this.myMessage = myMessage;
     }
 
-    public void load(){
+    public void load() {
         final var log = "Enabling NMS packets for {}";
         final var version = MinecraftVersion.getFormatted();
-        if(VersionUtil.isLessThanOrEqualTo("1.20.4")) {
+        if (VersionUtil.isLessThanOrEqualTo("1.20.4")) {
             try {
                 MyLogger.getLogger().info(log, version);
                 packetHandler = (PacketHandler) ReflectionUtils.getClass(searchClass(version, "PacketHandler"))
@@ -43,8 +43,7 @@ public final class NMSLoader {
                      NoSuchMethodException e) {
                 throw new RuntimeException(e);
             }
-        }
-        else {
+        } else if (VersionUtil.isLessThanOrEqualTo("1.20.5")) {
             try {
                 packetHandler = (PacketHandler) ReflectionUtils.getClass(searchClass("remapped", "PacketHandler"))
                         .getConstructor(Logger.class)
@@ -55,14 +54,27 @@ public final class NMSLoader {
                 adaptation = (CommandBrigadierAdaptation) ReflectionUtils.getClass(searchClass("remapped", "CommandImpl"))
                         .getConstructor()
                         .newInstance();
+            } catch (final NoSuchMethodException | InstantiationException | IllegalAccessException |
+                           InvocationTargetException ignored) {
             }
-            catch (final NoSuchMethodException | InstantiationException | IllegalAccessException |
-                         InvocationTargetException ignored){
+        } else {
+            try {
+                packetHandler = (PacketHandler) ReflectionUtils.getClass(searchClass(version, "PacketHandler"))
+                        .getConstructor(Logger.class)
+                        .newInstance(MyLogger.getLogger());
+                packetRegister = (PacketRegister) ReflectionUtils.getClass(searchClass(version, "PacketRegister"))
+                        .getConstructor()
+                        .newInstance();
+                adaptation = (CommandBrigadierAdaptation) ReflectionUtils.getClass(searchClass(version, "CommandImpl"))
+                        .getConstructor()
+                        .newInstance();
+            } catch (final NoSuchMethodException | InstantiationException | IllegalAccessException |
+                           InvocationTargetException ignored) {
             }
         }
     }
 
     public String searchClass(final String ver, final String clazz) {
-        return "me.kryz.mymessage.nms."+ver+"."+clazz;
+        return "me.kryz.mymessage.nms." + ver + "." + clazz;
     }
 }

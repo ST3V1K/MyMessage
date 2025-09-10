@@ -10,6 +10,7 @@ public record MinecraftVersion(String version, String formattedVersion) {
     public static final MinecraftVersion v1_21_R1 = new MinecraftVersion("1.21.0, 1.21.1", "v1_21_R1");
     public static final MinecraftVersion v1_21_R2 = new MinecraftVersion("1.21.2, 1.21.3", "v1_21_R2");
     public static final MinecraftVersion v1_21_R3 = new MinecraftVersion("1.21.4", "v1_21_R3");
+    public static final MinecraftVersion v1_21_R5 = new MinecraftVersion("1.21.7, 1.21.8", "v1_21_R5");
     public static final MinecraftVersion UNSUPPORTED = new MinecraftVersion("-", "Unsupported");
 
     @NotNull
@@ -32,6 +33,7 @@ public record MinecraftVersion(String version, String formattedVersion) {
                 v1_21_R1,
                 v1_21_R2,
                 v1_21_R3,
+                v1_21_R5,
                 UNSUPPORTED};
     }
 
