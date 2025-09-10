@@ -12,10 +12,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 @Getter
 public final class MyMessage extends JavaPlugin {
 
+    @Getter
+    public static boolean isPaper = false;
+
     private NMSLoader loader;
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
+        try {
+            Class.forName("com.destroystokyo.paper.PaperConfig");
+            isPaper = true;
+        } catch (final ClassNotFoundException e) {
+            isPaper = false;
+        }
+
         BaseTag.defaults();
         loader = new NMSLoader(this);
         loader.load();
@@ -31,30 +41,17 @@ public final class MyMessage extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(loader.getAdaptation(), this);
     }
 
-    public void onDisable(){
-    }
-
-    public void loadConfig(){
+    public void loadConfig() {
         reloadConfig();
         final String prefix = this.getConfig().getString("prefix");
         Prefix.setPrefix(prefix);
     }
 
-    public String getPluginVersion(){
-        if(isPaper()){
+    public String getPluginVersion() {
+        if (isPaper()) {
             return this.getPluginMeta().getVersion();
-        }
-        else {
+        } else {
             return this.getDescription().getVersion();
-        }
-    }
-
-    public static boolean isPaper() {
-        try {
-            Class.forName("com.destroystokyo.paper.PaperConfig");
-            return true;
-        } catch (final ClassNotFoundException e) {
-            return false;
         }
     }
 }
